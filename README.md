@@ -74,13 +74,29 @@ Raw Data (180,519 records)
 
 🔍 Visualisations Produced
 
-#ChartPurpose1KPI Summary CardsHeadline business metrics at a glance2Profitability Distribution PieOrder-level profit/loss/break-even breakdown3Delay Distribution Bar ChartSpread of delay days across all orders4Profit vs. Delay Days (dual-axis)Financial impact of each delay day5Bottleneck Detection (2×3 grid)Delay % across all 6 operational dimensions6Root Cause — East AfricaTop 10 driver combinations by delay %7Time Series (Month / Day / Hour)When delays are most likely to occur8ML Model PerformancePrecision, Recall, F1 by class9Feature ImportanceWhich variables drive delay prediction most
+#	Chart	Purpose
+1	KPI Summary Cards	Headline business metrics at a glance
+2	Profitability Distribution Pie	Order-level profit/loss/break-even breakdown
+3	Delay Distribution Bar Chart	Spread of delay days across all orders
+4	Profit vs. Delay Days (dual-axis)	Financial impact of each delay day
+5	Bottleneck Detection (2×3 grid)	Delay % across all 6 operational dimensions
+6	Root Cause — East Africa	Top 10 driver combinations by delay %
+7	Time Series (Month / Day / Hour)	When delays are most likely to occur
+8	ML Model Performance	Precision, Recall, F1 by class
+9	Feature Importance	Which variables drive delay prediction most
+
 
 
 
 🛠️ Tech Stack
 
-Tool Purpose Python 3 Core analysis language pandas Data cleaning, feature engineering, aggregation NumPy Numerical operations Matplotlib & Seaborn All data visualisations (viridis palette) scikit-learn Random Forest Classifier, train/test split, evaluation metrics imbalanced-learn SMOTE for class imbalance handling
+Tool	Purpose
+Python 3	Core analysis language
+pandas	Data cleaning, feature engineering, aggregation
+NumPy	Numerical operations
+Matplotlib & Seaborn	All data visualisations (viridis palette)
+scikit-learn	Random Forest Classifier, train/test split, evaluation metrics
+imbalanced-learn	SMOTE for class imbalance handling
 
 
 📁 Repository Structure
@@ -100,7 +116,7 @@ Dataset: The dataset is publicly available on Kaggle — download it and place i
 ▶️ How to Run
 
 bash# 1. Clone the repository
-git clone https://github.com//supply-chain-delivery-analysis.git
+git clone https://github.com/RushikeshTemghare/supply-chain-delivery-analysis.git
 cd supply-chain-delivery-analysis
 
 # 2. Install required libraries
