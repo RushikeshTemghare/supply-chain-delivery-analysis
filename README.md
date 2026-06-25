@@ -1,163 +1,286 @@
-🚚 Supply Chain Delivery Performance Analysis
+# 🚚 Supply Chain Delivery Performance Analysis
 
+Identified **$2.1M in profit lost to delays** from a **54.71% late delivery rate** across **172,765 global orders** — and built a machine learning model to predict delays before they happen.
 
-Identified $2.1M in profit lost to delays from a 54.71% late delivery rate across 172,765 global orders — and built a machine learning model to predict delays before they happen.
+The project combines business analytics, root-cause investigation, and machine learning to uncover operational bottlenecks and proactively predict delivery risk.
 
+---
 
-
-📌 Business Problem
+## 📌 Business Problem
 
 A global e-commerce company managing end-to-end order fulfilment across multiple regions was experiencing persistent delivery failures — actual shipping times were consistently exceeding scheduled timelines, leading to late deliveries, unpredictable profitability, and eroding customer trust.
 
 This project analyses the full order fulfilment pipeline, identifies the root causes of delay, and builds a predictive system to flag high-risk orders before dispatch — shifting the operation from reactive complaint management to proactive delay prevention.
 
+---
 
+## 📊 Key Findings
 
-📊 Key Findings
+* 📦 **172,765 orders analysed** across global regions after data cleaning
+* ⚠️ **54.71% of orders are delayed** — more than half of all orders miss the scheduled delivery window
+* 💸 **$2.1M in profit lost to delays** across 94,523 late deliveries
+* 📈 **80.66% of orders are profitable**, while 18.69% generate a loss
+* 🌍 **Central Africa, East Africa, and West Africa** are the highest-delay regions
+* 🚀 **First Class shipping** significantly underperforms relative to its premium positioning
+* 🏪 **Health & Beauty, Fan Shop, and Apparel** departments exhibit the highest delay rates
+* 📅 Time-based patterns reveal specific months, days, and hours with elevated delivery risk
+* 🤖 **Random Forest Classifier achieves 79% accuracy, 83% precision, and 78% recall** in predicting delayed orders
 
+---
 
-📦 172,765 orders analysed across global regions after data cleaning
-⚠️ 54.71% of orders are delayed — just over half of all orders miss the scheduled window
-💸 $2.1M in profit lost to delays — across 94,523 late deliveries
-📈 80.66% of orders are profitable — yet 18.69% generate a loss
-🌍 Central Africa, East Africa and West Africa are the highest-delay regions
-🚀 First Class shipping significantly underperforms vs. its premium positioning
-🏪 Health & Beauty, Fan Shop and Apparel departments show the highest delay rates
-📅 Time-based patterns reveal specific months, days and hours with elevated delays
-🤖 Random Forest model achieves ~74% accuracy in predicting delayed orders
+## 🗂️ Project Workflow
 
+```text
+Raw Data (180,519 Records)
 
-
-🗂️ Project Workflow
-
-
-Raw Data (180,519 records)
-         
-         │
-         ▼
-         
-1️⃣  Data Cleaning & Feature Engineering
-    • Dropped 33 redundant, PII, and low-information columns
-    • Removed cancelled orders → 172,765 clean records remain
-    • Confirmed Benefit per Order = Order Profit Per Order (duplicate dropped)
-    • Engineered: Order Processing Time, Delay, Is_Delayed,
-      Profitability Flag, order_month, order_day, order_hour
-        
         │
         ▼
-        
-2️⃣  Business KPI Creation
-    • Total orders, on-time %, late %, 90th percentile delay
-    • Total profit, financial loss due to delays
-        
+
+1️⃣ Data Cleaning & Feature Engineering
+• Dropped 33 redundant, PII, and low-information columns
+• Removed cancelled orders → 172,765 clean records remain
+• Confirmed Benefit per Order = Order Profit Per Order (duplicate dropped)
+• Engineered:
+  - Order Processing Time
+  - Delay
+  - Is_Delayed
+  - Profitability Flag
+  - order_month
+  - order_day
+  - order_hour
+
         │
         ▼
-        
-3️⃣  Profitability Analysis
-    • Profitability distribution (Profit 80.66% / Loss 18.69% / Break-even 0.65%)
-    • Profit vs. delay days (dual-axis bar + line chart)
-        
+
+2️⃣ Business KPI Creation
+• Total orders
+• On-time delivery %
+• Late delivery %
+• 90th percentile delay
+• Total profit
+• Financial loss due to delays
+
         │
         ▼
-        
-4️⃣  Bottleneck Detection
-    • Delay % computed across 6 dimensions:
-      Region, Shipping Mode, Department, Customer Segment, Payment Type, Order Status
-        
+
+3️⃣ Profitability Analysis
+• Profitability distribution
+  - Profit: 80.66%
+  - Loss: 18.69%
+  - Break-even: 0.65%
+• Profit vs Delay Days analysis
+
         │
         ▼
-        
-5️⃣  Root Cause Analysis
-    • Drilled into highest-delay region (East Africa)
-    • Top 10 driver combinations ranked by delay %
-       
+
+4️⃣ Bottleneck Detection
+• Delay % computed across:
+  - Region
+  - Shipping Mode
+  - Department
+  - Customer Segment
+  - Payment Type
+  - Order Status
+
         │
         ▼
-        
-6️⃣  Time-Based Delay Patterns
-    • Delay trends by month, day of week, and hour of day
-        
+
+5️⃣ Root Cause Analysis
+• Drilled into highest-delay region (Central Africa)
+• Ranked top 10 operational driver combinations by delay %
+
         │
         ▼
-        
-7️⃣  Machine Learning — Delay Prediction
-    • Frequency encoding → SMOTE balancing → Random Forest Classifier
-    • ~74% accuracy | balanced precision/recall on both classes
-    • Feature importance: Region > Shipping Mode > Department
 
+6️⃣ Time-Based Delay Patterns
+• Delay trends by:
+  - Month
+  - Day of Week
+  - Hour of Day
 
+        │
+        ▼
 
-🔍 Visualisations Produced
+7️⃣ Machine Learning — Delay Prediction
+• Frequency Encoding for categorical variables
+• SMOTE balancing applied to training data
+• Random Forest Classifier
+• Accuracy: 79%
+• Precision: 83%
+• Recall: 78%
+• F1-Score: 80%
+• Feature importance analysis
+```
 
-No	Chart	Purpose
-1	KPI Summary Cards	Headline business metrics at a glance
-2	Profitability Distribution Pie	Order-level profit/loss/break-even breakdown
-3	Delay Distribution Bar Chart	Spread of delay days across all orders
-4	Profit vs. Delay Days (dual-axis)	Financial impact of each delay day
-5	Bottleneck Detection (2×3 grid)	Delay % across all 6 operational dimensions
-6	Root Cause — East Africa	Top 10 driver combinations by delay %
-7	Time Series (Month / Day / Hour)	When delays are most likely to occur
-8	ML Model Performance	Precision, Recall, F1 by class
-9	Feature Importance	Which variables drive delay prediction most
+---
 
+## 🔍 Visualisations Produced
 
+| No. | Visualisation                        | Purpose                                      |
+| --- | ------------------------------------ | -------------------------------------------- |
+| 1   | KPI Summary Cards                    | Headline business metrics                    |
+| 2   | Profitability Distribution Pie Chart | Profit/Loss/Break-even breakdown             |
+| 3   | Delay Distribution Bar Chart         | Distribution of delay days                   |
+| 4   | Profit vs Delay Days (Dual Axis)     | Financial impact of delays                   |
+| 5   | Bottleneck Detection Dashboard       | Delay % across operational dimensions        |
+| 6   | Root Cause Analysis                  | Top delay drivers within highest-risk region |
+| 7   | Time Trend Analysis                  | Delay patterns by month/day/hour             |
+| 8   | ML Model Performance                 | Precision, Recall, F1-score                  |
+| 9   | Feature Importance Analysis          | Most influential delay predictors            |
 
+---
 
-🛠️ Tech Stack
+## 🤖 Machine Learning Results
 
-Tool	Purpose
-Python 3	Core analysis language
-pandas	Data cleaning, feature engineering, aggregation
-NumPy	Numerical operations
-Matplotlib & Seaborn	All data visualisations (viridis palette)
-scikit-learn	Random Forest Classifier, train/test split, evaluation metrics
-imbalanced-learn	SMOTE for class imbalance handling
+### Model
 
+Random Forest Classifier
 
-📁 Repository Structure
+### Training Approach
 
+* Frequency Encoding for categorical variables
+* Train/Test Split (80/20)
+* SMOTE applied to training data only
+* Random Forest trained on balanced data
+
+### Performance
+
+| Metric    | Score |
+| --------- | ----- |
+| Accuracy  | 79%   |
+| Precision | 83%   |
+| Recall    | 78%   |
+| F1-Score  | 80%   |
+
+### Classification Report
+
+| Class   | Precision | Recall | F1-Score |
+| ------- | --------- | ------ | -------- |
+| On Time | 0.75      | 0.81   | 0.78     |
+| Delayed | 0.83      | 0.78   | 0.80     |
+
+The model demonstrates strong and balanced predictive performance across both classes, making it suitable for proactively identifying high-risk orders before shipment.
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool             | Purpose                                         |
+| ---------------- | ----------------------------------------------- |
+| Python 3         | Core analysis language                          |
+| pandas           | Data cleaning, feature engineering, aggregation |
+| NumPy            | Numerical operations                            |
+| Matplotlib       | Data visualisation                              |
+| Seaborn          | Statistical visualisation                       |
+| scikit-learn     | Machine learning and evaluation                 |
+| imbalanced-learn | SMOTE class balancing                           |
+
+---
+
+## 📁 Repository Structure
+
+```text
 supply-chain-delivery-analysis/
 │
-├── Supply_Chain_Analysis.ipynb          # Full analysis notebook (end-to-end)
-└── README.md                            # You are here
+├── Supply_Chain_Analysis.ipynb
+│   └── Full end-to-end analysis notebook
+│
+└── README.md
+    └── Project documentation
+```
 
+### Dataset
 
-Dataset: The dataset is publicly available on Kaggle — download it and place it in the root folder as SupplyChainDataset.csv
+The dataset is publicly available on Kaggle.
 
-🔗 DataCo Supply Chain Dataset - https://www.kaggle.com/datasets/saicharankomati/dataco-supply-chain-dataset/data — Kaggle
+Download the dataset and place it in the project root folder as:
 
+```text
+SupplyChainDataset.csv
+```
 
+Data Source:
 
-▶️ How to Run
+https://www.kaggle.com/datasets/saicharankomati/dataco-supply-chain-dataset/data
 
-1. Clone the repository
+---
+
+## ▶️ How to Run
+
+### Clone the Repository
+
+```bash
 git clone https://github.com/RushikeshTemghare/supply-chain-delivery-analysis.git
+
 cd supply-chain-delivery-analysis
+```
 
-2. Install required libraries
+### Install Dependencies
+
+```bash
 pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn
+```
 
-3. Download the dataset from Kaggle (link - https://www.kaggle.com/datasets/saicharankomati/dataco-supply-chain-dataset/data)
-Place it in the root folder as: SupplyChainDataset.csv
+### Download Dataset
 
-4. Open the notebook
+Download from Kaggle:
+
+https://www.kaggle.com/datasets/saicharankomati/dataco-supply-chain-dataset/data
+
+Place the file in the project root directory:
+
+```text
+SupplyChainDataset.csv
+```
+
+### Run the Notebook
+
+```bash
 jupyter notebook Supply_Chain_Analysis.ipynb
+```
 
+---
 
-💡 Strategic Recommendations
+## 💡 Strategic Recommendations
 
-Based on the analysis, the top actions identified for the business are:
+Based on the analysis, the highest-impact business actions are:
 
+### 1. Audit First Class Shipping
 
-Audit First Class Shipping — Geo-restrict availability in regions where delay rate is highest; renegotiate carrier SLAs
-Fix high-delay African regions — Engage regional 3PL partners with last-mile capability; consider regional warehousing hubs
-Inventory overhaul in Health & Beauty — Dedicated pick zones, faster restocking cycles, parallelise compliance checks
-Identify seasonal surge patterns — Pre-negotiate carrier burst capacity and warehouse staffing based on time-series findings
-Adjust order cut-off times — Address day-of-week and hour-of-day delay spikes identified in the time analysis
-Deploy the ML model as a live scoring API — Flag high-risk orders at point of creation for priority warehouse handling
+* Geo-restrict availability in regions with persistent delays
+* Renegotiate carrier SLAs where premium service is underperforming
 
+### 2. Improve African Regional Logistics
 
+* Partner with stronger last-mile delivery providers
+* Evaluate regional warehousing hubs to reduce transit times
 
-👤 Author
+### 3. Optimise Health & Beauty Operations
 
-Rushikesh Temghare — MSc Data Science & Artificial Intelligence
+* Introduce dedicated picking zones
+* Accelerate replenishment cycles
+* Streamline compliance-related fulfilment processes
+
+### 4. Prepare for Seasonal Demand Peaks
+
+* Forecast delay-prone periods using historical trends
+* Secure additional carrier and warehouse capacity in advance
+
+### 5. Optimise Order Cut-Off Times
+
+* Adjust operational schedules based on day-of-week and hour-of-day delay patterns
+
+### 6. Deploy Predictive Delay Scoring
+
+* Integrate the model into order creation workflows
+* Prioritise high-risk orders for proactive intervention
+
+---
+
+## 👤 Author
+
+**Rushikesh Temghare**
+
+MSc Data Science & Artificial Intelligence
+
+Focused on applying analytics and machine learning to solve real-world business and supply chain problems.
