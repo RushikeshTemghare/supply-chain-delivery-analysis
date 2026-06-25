@@ -115,7 +115,7 @@ Dataset: The dataset is publicly available on Kaggle — download it and place i
 
 ▶️ How to Run
 
-bash# 1. Clone the repository
+1. Clone the repository
 git clone https://github.com/RushikeshTemghare/supply-chain-delivery-analysis.git
 cd supply-chain-delivery-analysis
 
