@@ -30,41 +30,56 @@ This project analyses the full order fulfilment pipeline, identifies the root ca
 
 🗂️ Project Workflow
 
+
 Raw Data (180,519 records)
-        │
-        ▼
+         
+         │
+         ▼
+         
 1️⃣  Data Cleaning & Feature Engineering
     • Dropped 33 redundant, PII, and low-information columns
     • Removed cancelled orders → 172,765 clean records remain
     • Confirmed Benefit per Order = Order Profit Per Order (duplicate dropped)
     • Engineered: Order Processing Time, Delay, Is_Delayed,
       Profitability Flag, order_month, order_day, order_hour
+        
         │
         ▼
+        
 2️⃣  Business KPI Creation
     • Total orders, on-time %, late %, 90th percentile delay
     • Total profit, financial loss due to delays
+        
         │
         ▼
+        
 3️⃣  Profitability Analysis
     • Profitability distribution (Profit 80.66% / Loss 18.69% / Break-even 0.65%)
     • Profit vs. delay days (dual-axis bar + line chart)
+        
         │
         ▼
+        
 4️⃣  Bottleneck Detection
     • Delay % computed across 6 dimensions:
       Region, Shipping Mode, Department, Customer Segment, Payment Type, Order Status
+        
         │
         ▼
+        
 5️⃣  Root Cause Analysis
     • Drilled into highest-delay region (East Africa)
     • Top 10 driver combinations ranked by delay %
+       
         │
         ▼
+        
 6️⃣  Time-Based Delay Patterns
     • Delay trends by month, day of week, and hour of day
+        
         │
         ▼
+        
 7️⃣  Machine Learning — Delay Prediction
     • Frequency encoding → SMOTE balancing → Random Forest Classifier
     • ~74% accuracy | balanced precision/recall on both classes
