@@ -74,7 +74,7 @@ Raw Data (180,519 records)
 
 🔍 Visualisations Produced
 
-#	Chart	Purpose
+No	Chart	Purpose
 1	KPI Summary Cards	Headline business metrics at a glance
 2	Profitability Distribution Pie	Order-level profit/loss/break-even breakdown
 3	Delay Distribution Bar Chart	Spread of delay days across all orders
@@ -119,13 +119,13 @@ bash# 1. Clone the repository
 git clone https://github.com/RushikeshTemghare/supply-chain-delivery-analysis.git
 cd supply-chain-delivery-analysis
 
-# 2. Install required libraries
+2. Install required libraries
 pip install pandas numpy matplotlib seaborn scikit-learn imbalanced-learn
 
-# 3. Download the dataset from Kaggle (link above)
-#    Place it in the root folder as: SupplyChainDataset.csv
+3. Download the dataset from Kaggle (link - https://www.kaggle.com/datasets/saicharankomati/dataco-supply-chain-dataset/data)
+Place it in the root folder as: SupplyChainDataset.csv
 
-# 4. Open the notebook
+4. Open the notebook
 jupyter notebook Supply_Chain_Analysis.ipynb
 
 
