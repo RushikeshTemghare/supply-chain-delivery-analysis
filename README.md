@@ -1,4 +1,4 @@
-# 🚚 Supply Chain Delivery Performance Analysis
+# Supply Chain Delivery Performance Analysis
 
 Identified **$2.1M in profit lost to delays** from a **54.71% late delivery rate** across **172,765 global orders** — and built a machine learning model to predict delays before they happen.
 
